@@ -10,7 +10,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Routes>
         <Route index element={<CreateRoom />} />
-        <Route path="/room/:id" element={<Room />} />
+        <Route path="/room/:roomId" element={<Room />} />
       </Routes>
     </QueryClientProvider>
   );
