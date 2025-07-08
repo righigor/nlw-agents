@@ -1,0 +1,43 @@
+import type { FastifyPluginCallbackZod } from "fastify-type-provider-zod";
+import { db } from "../../db/connection.ts";
+import { schema } from "../../db/schema/index.ts";
+import z from "zod/v4";
+
+export const createQuestionRoute: FastifyPluginCallbackZod = (app) => {
+  app.post(
+    "/rooms/:roomId/questions",
+    {
+      schema: {
+        params: z.object({
+          roomId: z.string(),
+        }),
+        body: z.object({
+          question: z.string().min(1).max(100),
+        }),
+      },
+    },
+    async (request, reply) => {
+      const { question } = request.body;
+      const { roomId } = request.params;
+      const [questionres] = await db
+        .insert(schema.questions)
+        .values({
+          question,
+          roomId,
+        })
+        .returning({
+          id: schema.questions.id,
+          roomId: schema.questions.roomId,
+          createdAt: schema.questions.createdAt,
+          answer: schema.questions.answer,
+        });
+
+      if (!questionres) {
+        throw new Error("Failed to create question");
+      }
+      return reply.status(201).send({
+        questionId: questionres.id,
+      });
+    }
+  );
+};
