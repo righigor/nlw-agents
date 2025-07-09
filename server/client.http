@@ -27,9 +27,9 @@ GET {{baseUrl}}/rooms/20b8b650-62c7-4286-cca6-c3693b7c8811/questions
 ###
 
 # Post a new question to a specific room
-POST {{baseUrl}}/rooms/20b8b650-62c7-4286-cca6-c3693b7c8811/questions
+POST {{baseUrl}}/rooms/0dbc2f98-4968-44be-4fdb-f399737e5e21/questions
 Content-Type: application/json
 
 {
-  "question": "What is the capital of France?"
+  "question": "Qual é o maior clube de minas gerais?"
 }

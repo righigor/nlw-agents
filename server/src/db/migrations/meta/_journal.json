@@ -15,6 +15,13 @@
       "when": 1751999744639,
       "tag": "0001_conscious_gladiator",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752072706070,
+      "tag": "0002_square_onslaught",
+      "breakpoints": true
     }
   ]
 }
