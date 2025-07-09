@@ -32,7 +32,7 @@ export function RecordRoomAudio() {
 
     formData.append("file", blob, "audio.webm");
 
-    const response = await fetch(`/api/rooms/${roomId}/audio`, {
+    const response = await fetch(`http://localhost:3333/rooms/${roomId}/audio`, {
       method: "POST",
       body: formData,
     });
