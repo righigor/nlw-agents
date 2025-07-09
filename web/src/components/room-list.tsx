@@ -13,6 +13,7 @@ import { useRooms } from "@/http/use-rooms";
 
 export function RoomList() {
   const { data, isLoading } = useRooms();
+  console.log("Rooms data:", data);
   return (
     <Card>
       <CardHeader>
@@ -27,7 +28,7 @@ export function RoomList() {
             <span>Carregando...</span>
           </div>
         )}
-        {data &&
+        {data && data.length > 0 && (
           data.map((room) => (
             <Link
               key={room.id}
@@ -49,7 +50,7 @@ export function RoomList() {
                 Entrar <ArrowRight className="size-3" />
               </span>
             </Link>
-          ))}
+          )))}
       </CardContent>
     </Card>
   );
